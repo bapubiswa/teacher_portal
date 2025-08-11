@@ -152,13 +152,13 @@ db.sqlite3
 ## 📸 Screenshots
 
 ### 1️⃣ Login Page
-![Login Page](teacher_portal_images/login.png)
+![Login Page](teacher_portal_images/loginpage.png)
 
 ### 2️⃣ Dashboard
 ![Dashboard](teacher_portal_images/dashboard.png)
 
 ### 3️⃣ Add Student
-![Add Student](teacher_portal_images/add_student.png)
+![Add Student](teacher_portal_images/add student.png)
 
 ### 4️⃣ After Adding – Action Buttons
 ![Action Buttons](teacher_portal_images/edit and delete.png)
