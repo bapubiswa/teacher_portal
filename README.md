@@ -158,7 +158,7 @@ db.sqlite3
 ![Dashboard](teacher_portal_images/dashboard.png)
 
 ### 3️⃣ Add Student
-![Add Student](teacher_portal_images/add student.png)
+![Add Student][(teacher_portal_images/add student.png](https://github.com/bapubiswa/teacher_portal/blob/bbc281d9ae4e8750ac28771f164cff51a3548087/teacher_portal_images/add%20student.png))
 
 ### 4️⃣ After Adding – Action Buttons
 ![Action Buttons](teacher_portal_images/edit and delete.png)
