@@ -149,5 +149,34 @@ db.sqlite3
 
 ---
 
+## 📸 Screenshots
+
+### 1️⃣ Login Page
+![Login Page](teacher_portal_images/login.png)
+
+### 2️⃣ Dashboard
+![Dashboard](teacher_portal_images/dashboard.png)
+
+### 3️⃣ Add Student
+![Add Student](teacher_portal_images/add_student.png)
+
+### 4️⃣ After Adding – Action Buttons
+![Action Buttons](teacher_portal_images/edit and delete.png)
+
+### 5️⃣ Edit Student Data
+![Edit Student](teacher_portal_images/edit_student.png)
+
+### 6️⃣ Teachers Table (PostgreSQL)
+![Teachers Table](teacher_portal_images/teachers_table.png)
+
+### 7️⃣ Students Table (PostgreSQL)
+![Students Table](teacher_portal_images/students_table.png)
+
+### 8️⃣ Audit Log Table (PostgreSQL)
+![Audit Log](teacher_portal_images/audit_log_table.png)
+
+---
+
+
 ## **Author**
 Developed by **Biswajeet Das** ✨ 
