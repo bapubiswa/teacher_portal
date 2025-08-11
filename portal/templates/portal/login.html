@@ -1,0 +1,369 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teacher Portal Login</title>
+  <style>
+    /* Reset and basics */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    /* Container holding the split layout */
+    .main-content {
+      width: 50%;
+      margin: 5em auto;
+      display: flex;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      background: white;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    /* Left company info panel */
+    .company__info {
+      background-color: #008080;
+      color: white;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2em;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    .company__logo {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+    }
+
+    .company_title {
+      font-weight: 600;
+      font-size: 1.5em;
+    }
+
+    /* Right login form panel */
+    .login_form {
+      flex: 1;
+      background: white;
+      padding: 2em 3em;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login_form h2 {
+      color: #008080;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    /* Form styles */
+    form {
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.3em;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #aaa;
+      padding: 0.8em 0.5em 0.5em 2em;
+      margin-bottom: 1.5em;
+      outline: none;
+      transition: all 0.3s ease;
+      border-radius: 0;
+      font-size: 1em;
+      background: url('data:image/svg+xml;utf8,<svg fill="%23808080" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M10 17l5-5-5-5v10z"/></svg>') no-repeat 5px center;
+      background-size: 16px 16px;
+      padding-left: 30px;
+    }
+
+    input[type="password"] {
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23808080" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 17a2 2 0 0 0 2-2v-1H10v1a2 2 0 0 0 2 2zm6-5v7H6v-7a3 3 0 0 1 6 0v1h2v-1a3 3 0 0 1 6 0z"/></svg>');
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-bottom-color: #008080;
+      box-shadow: 0 0 5px rgba(0, 128, 128, 0.5);
+      border-radius: 4px;
+      background-color: #f0f8f8;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5em;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 0.5em;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .checkbox-container label {
+      margin: 0;
+      font-weight: normal;
+      color: #555;
+      cursor: pointer;
+    }
+
+    button,
+    input[type="submit"] {
+      width: 70%;
+      padding: 0.8em 0;
+      border-radius: 30px;
+      border: 1px solid #008080;
+      background: white;
+      color: #008080;
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      margin: 0 auto 1em auto;
+    }
+
+    button:hover,
+    input[type="submit"]:hover,
+    button:focus,
+    input[type="submit"]:focus {
+      background-color: #008080;
+      color: white;
+      outline: none;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 1em;
+      color: #008080;
+      font-weight: 600;
+    }
+
+    .links a {
+      color: #008080;
+      text-decoration: none;
+      margin: 0 0.5em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      overflow-y: auto;
+      padding-top: 50px;
+    }
+
+    .modal-inner {
+      background: white;
+      max-width: 360px;
+      margin: auto;
+      padding: 2em 2.5em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.25);
+      position: relative;
+    }
+
+    .modal-inner h3 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #008080;
+    }
+
+    .modal-inner button.cancel-btn {
+      background: #aaa;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 0.5em;
+    }
+
+    .modal-inner button.cancel-btn:hover {
+      background: #888;
+    }
+
+    .modal-inner form button[type="submit"] {
+      margin-top: 1em;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 640px) {
+      .main-content {
+        width: 90%;
+        flex-direction: column;
+        margin: 2em auto;
+        border-radius: 15px;
+        box-shadow: none;
+      }
+
+      .company__info {
+        display: none;
+      }
+
+      .login_form {
+        border-radius: 15px;
+        padding: 1.5em 1.5em 2em;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      }
+    }
+
+    @media screen and (min-width: 641px) and (max-width: 800px) {
+      .main-content {
+        width: 70%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-content">
+  <!-- Left panel -->
+  <div class="company__info" aria-label="Company Information">
+    <div class="company__logo" aria-hidden="true">👩‍🏫</div>
+    <h4 class="company_title">Teacher Portal</h4>
+    <p>Your gateway to manage  students Records</p>
+  </div>
+
+  <!-- Right panel -->
+  <div class="login_form" aria-label="Login Form Section">
+    <h2>Login</h2>
+    {% if error %}
+      <p style="color:red; text-align:center;">{{ error }}</p>
+    {% endif %}
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required placeholder="Enter username" />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required placeholder="Enter password" />
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="remember_me" name="remember_me" />
+        <label for="remember_me">Remember Me!</label>
+      </div>
+
+      <input type="submit" value="Login" />
+    </form>
+
+    <p class="links">
+      <a href="#" id="openRegister">Create Account</a> |
+      <a href="#" id="openForgot">Forgot Password?</a>
+    </p>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div id="registerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="registerTitle" aria-hidden="true">
+  <div class="modal-inner">
+    <h3 id="registerTitle">Create Account</h3>
+    <form method="post" action="{% url 'register' %}">
+      {% csrf_token %}
+      <label for="reg_username">Username:</label>
+      <input type="text" id="reg_username" name="username" required placeholder="Choose username" />
+      <label for="reg_password">Password:</label>
+      <input type="password" id="reg_password" name="password" required placeholder="Choose password" />
+      <button type="submit">Register</button>
+      
+    </form>
+  </div>
+</div>
+
+<!-- Forgot Password Modal -->
+<div id="forgotModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="forgotTitle" aria-hidden="true">
+  <div class="modal-inner">
+    <h3 id="forgotTitle">Reset Password</h3>
+    <form method="post" action="{% url 'forgot_password' %}">
+      {% csrf_token %}
+      <label for="forgot_username">Enter your username:</label>
+      <input type="text" id="forgot_username" name="username" required placeholder="Username" />
+      <button type="submit">Reset Password</button>
+      
+    </form>
+  </div>
+</div>
+
+<script>
+  // Modal open/close handlers
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+  }
+  function closeModal(id) {
+    const modal = document.getElementById(id);
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('openRegister').addEventListener('click', e => {
+    e.preventDefault();
+    openModal('registerModal');
+  });
+
+  document.getElementById('openForgot').addEventListener('click', e => {
+    e.preventDefault();
+    openModal('forgotModal');
+  });
+
+  // Optional: close modal on outside click
+  window.addEventListener('click', e => {
+    ['registerModal', 'forgotModal'].forEach(id => {
+      const modal = document.getElementById(id);
+      if (e.target === modal) closeModal(id);
+    });
+  });
+
+  // Optional: close modal on Esc key
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      ['registerModal', 'forgotModal'].forEach(id => closeModal(id));
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  {% if messages %}
+    {% for message in messages %}
+      Swal.fire({
+        icon: '{% if message.tags == "success" %}success{% else %}info{% endif %}',
+        title: '{{ message }}',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    {% endfor %}
+  {% endif %}
+</script>
+</body>
+</html>

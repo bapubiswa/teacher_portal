@@ -1,0 +1,117 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Add Student - Dynamic UI</title>
+
+<!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/student_list.css' %}">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-content">
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <a href="{% url 'students_list' %}" class="nav-logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" height="40" />
+      </a>
+      <button class="nav-btn home-btn" onclick="goHome()">
+        <i class="fa-solid fa-house"></i> Home
+      </button>
+    </div>
+
+    <div class="nav-user-name">
+      Hello, {{ username }}
+    </div>
+
+    <form id="logoutForm" method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="nav-btn logout-btn" onclick="return confirmLogout(event);">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </button>
+    </form>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="header">
+    <h1 class="page-title">Students List</h1>
+    <button class="add-student-btn" onclick="openModal()">
+      <i class="fa-solid fa-plus"></i> Add Student
+    </button>
+  </div>
+
+  <!-- Students Table -->
+  <div class="table-card">
+    <table class="table" aria-label="Students Table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>Mark</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="studentsTable">
+        <!-- rows will be dynamically rendered here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Popup -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h2 class="modal-title">
+        <i class="fa-solid fa-user-plus"></i>
+        Add New Student
+      </h2>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="studentForm" onsubmit="addOrUpdateStudent(event)">
+            <div class="form-group input-with-icon">
+                <label class="form-label" for="studentName">Name</label>
+                <i class="fa-regular fa-user"></i>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter student name" required />
+            </div>
+
+            <div class="form-group input-with-icon">
+                <label class="form-label" for="studentSubject">Subject</label>
+                <i class="fa-regular fa-bookmark"></i>
+                <input type="text" id="studentSubject" class="form-input" placeholder="Enter subject" required />
+            </div>
+
+            <div class="form-group input-with-icon">
+                <label class="form-label" for="studentMark">Mark</label>
+                <i class="fa-regular fa-flag"></i>
+                <input type="number" id="studentMark" class="form-input" placeholder="Enter mark" min="0" max="100" required />
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="btn-submit">Add Student</button>
+            </div>
+        </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Custom JS -->
+<script src="{% static 'js/student_list.js' %}"></script>
+<footer class="footer">
+    <span>© 2025&nbsp;&nbsp;tailwebs&nbsp;&nbsp;Terms &amp; Conditions&nbsp;&nbsp;Privacy Policy</span>
+</footer>
+
+</body>
+</html>
