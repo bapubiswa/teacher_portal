@@ -161,19 +161,18 @@ db.sqlite3
 ![Add Student](https://github.com/bapubiswa/teacher_portal/blob/bbc281d9ae4e8750ac28771f164cff51a3548087/teacher_portal_images/add%20student.png)
 
 ### 4️⃣ After Adding – Action Buttons
-![Action Buttons](teacher_portal_images/edit and delete.png)
-
+![Action Buttons](https://github.com/bapubiswa/teacher_portal/blob/30501cf15f9d32c303f7508536515478d2526fa0/teacher_portal_images/edit%20and%20delete.png)
 ### 5️⃣ Edit Student Data
-![Edit Student](teacher_portal_images/edit_student.png)
+![Edit Student](https://github.com/bapubiswa/teacher_portal/blob/30501cf15f9d32c303f7508536515478d2526fa0/teacher_portal_images/edit%20tudent.png)
 
 ### 6️⃣ Teachers Table (PostgreSQL)
-![Teachers Table](teacher_portal_images/teachers_table.png)
+![Teachers Table](https://github.com/bapubiswa/teacher_portal/blob/30501cf15f9d32c303f7508536515478d2526fa0/teacher_portal_images/teacher_table.png)
 
 ### 7️⃣ Students Table (PostgreSQL)
-![Students Table](teacher_portal_images/students_table.png)
+![Students Table](https://github.com/bapubiswa/teacher_portal/blob/30501cf15f9d32c303f7508536515478d2526fa0/teacher_portal_images/students_table.png)
 
 ### 8️⃣ Audit Log Table (PostgreSQL)
-![Audit Log](teacher_portal_images/audit_log_table.png)
+![Audit Log](https://github.com/bapubiswa/teacher_portal/blob/30501cf15f9d32c303f7508536515478d2526fa0/teacher_portal_images/audit_log.png)
 
 ---
 
